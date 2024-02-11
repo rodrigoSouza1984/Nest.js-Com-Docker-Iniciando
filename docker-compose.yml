@@ -18,7 +18,7 @@ services:
       - "6379:6379" # Mapeamento da porta do host para a porta do contêiner
   
   rabbitmq:
-    image: rabbitmq:3.12-management #management para poder abrir ele na url ele abre tipo o workbench para podermos configurar filas etc
+    image: rabbitmq:3.12-management #escolhar versao com  - management para poder abrir ele na url com interface gráfica para administrar e gerenciar as filas
     ports:
       - 15672:15672 # use http://localhost:15672/ e vai entrar na interface gráfica para administrar e gerenciar as filas
     environment:
