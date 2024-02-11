@@ -16,6 +16,14 @@ services:
     restart: always
     ports:
       - "6379:6379" # Mapeamento da porta do host para a porta do contêiner
+  
+  rabbitmq:
+    image: rabbitmq:3.12-management #management para poder abrir ele na url ele abre tipo o workbench para podermos configurar filas etc
+    ports:
+      - 15672:15672 # use http://localhost:15672/ e vai entrar na interface gráfica para administrar e gerenciar as filas
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
 
   # NestJS service
   nestjs:
@@ -28,6 +36,7 @@ services:
     depends_on:
       - db
       - redis
+      - rabbitmq
     env_file:
       - .env
 
