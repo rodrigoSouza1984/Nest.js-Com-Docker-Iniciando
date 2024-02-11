@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  # MySQL 8 service
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql-container      
+    volumes:
+      - data:/var/lib/mysql 
+    restart: always # Volume para persistir os dados do MySQL
+  
+  # Redis service
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379" # Mapeamento da porta do host para a porta do contêiner
+
+  # NestJS service
+  nestjs:
+    build: 
+      context: .
+      dockerfile: Dockerfile # Caminho para o Dockerfile do NestJS
+    restart: always
+    ports:
+      - "3000:3000" # Mapeamento da porta do host para a porta do contêiner
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+
+volumes:
+  data:
