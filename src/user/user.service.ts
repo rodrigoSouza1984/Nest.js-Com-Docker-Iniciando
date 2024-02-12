@@ -5,6 +5,7 @@ import { UserEntity } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
+
 @Injectable()
 export class UserService {
 
@@ -28,7 +29,7 @@ export class UserService {
   }
 
   async findAll() {
-    try{
+    try{      
       return await this.userRepository.find()
     }catch(err){
       throw err

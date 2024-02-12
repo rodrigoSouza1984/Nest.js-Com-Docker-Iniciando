@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { RabbitModule } from './rabbit/rabbit.module';
 
 
 
@@ -23,7 +24,7 @@ import { UserModule } from './user/user.module';
         autoLoadEntities: true,
       }),
     }),   
-    UserModule,
+    UserModule, RabbitModule,
   ],
   controllers: [AppController],
   providers: [AppService],
