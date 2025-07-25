@@ -24,6 +24,8 @@
 
 ## Description
 
+projeto iniciado com entidade user e seu crud....Docker compose configurado com Mysql, Redis, Rabbitmq
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
